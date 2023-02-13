@@ -1,5 +1,5 @@
 const Login = async (name, password) => {
-  if (name == "John Doe" && password == "testing") {
+  if (name == "admin@test.com" && password == "password") {
     return {
       status: true,
       code: 200,
