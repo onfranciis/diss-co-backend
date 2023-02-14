@@ -1,6 +1,7 @@
 const Home = (id) => {
+  const image = `${process.env.BLOB}`;
   return {
-    image: "http://localhost:5173/signin",
+    image: image,
     name: "John Doe",
   };
 };
