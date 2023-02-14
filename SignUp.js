@@ -2,10 +2,9 @@ const SignUp = async (user) => {
   const { name, family } = user;
 
   return {
-    status: true,
-    code: 400,
+    code: 200,
     data: {
-      status: false,
+      status: true,
       message: {
         Description: `${name} has been created successfully`,
       },
