@@ -1,8 +1,12 @@
-const Home = (id) => {
-  const image = `${process.env.BLOB}`;
+const { homeFetch } = require("./db");
+
+const Home = async (id) => {
+  const { name, family, image } = await homeFetch(id);
+  const fullName = `${name} ${family}`;
+  if (!name) return { name: `${fullName} Not Found` };
   return {
     image: image,
-    name: "John Doe",
+    name: fullName,
   };
 };
 
