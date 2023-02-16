@@ -1,5 +1,22 @@
-const Login = async (name, password) => {
-  if (name == "admin@test.com" && password == "password") {
+const { loginDb } = require("./db");
+
+const Login = async (username, password) => {
+  if (username == "" || password == "") {
+    return {
+      status: true,
+      code: 400,
+      data: {
+        status: false,
+        message: {
+          token: null,
+          Description: "Invalid Details",
+        },
+      },
+    };
+  }
+
+  const { sent } = await loginDb(username, password);
+  if (sent) {
     return {
       status: true,
       code: 200,
@@ -7,7 +24,7 @@ const Login = async (name, password) => {
         status: true,
         message: {
           token: "testToken",
-          Description: `${name} has been logged in successfully`,
+          Description: `${username} has been logged in successfully`,
         },
       },
     };
@@ -19,7 +36,7 @@ const Login = async (name, password) => {
         status: false,
         message: {
           token: null,
-          Description: `Something went wrong`,
+          Description: `username or password not found`,
         },
       },
     };
