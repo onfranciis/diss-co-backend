@@ -11,9 +11,12 @@
   "author": "onfranciis",
   "license": "ISC",
   "dependencies": {
+    "cloudinary": "^1.34.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "express-fileupload": "^1.4.0",
+    "mongodb": "^5.0.1",
     "nodemon": "^2.0.20"
   }
 }
