@@ -1,6 +1,5 @@
 const dotenv = require("dotenv");
 dotenv.config({ path: ".env" });
-const path = require("path");
 const cors = require("cors");
 const express = require("express");
 const fileUpload = require("express-fileupload");
@@ -25,12 +24,7 @@ app.post(
   "/api/signup",
   fileUpload({ createParentPath: true }),
   async (req, res) => {
-    const files = req.files;
-    const body = req.body;
-    const filepath = path.join(__dirname, "uploads", "User.jpg");
-    files?.image?.mv(filepath, (err) => {
-      // console.log(err);
-    });
+    const { body } = req;
     const data = await SignUp(body);
     res.json(data);
   }
