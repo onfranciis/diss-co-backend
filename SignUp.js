@@ -1,12 +1,11 @@
-const { cloudinaryUpload } = require("./Cloudinary");
 const { dbSend, connectDB } = require("./db");
 
-const SignUp = async (user, files) => {
-  const { name } = user;
-  const { url } = await cloudinaryUpload(files);
-  const formData = { ...user, image: url };
+const SignUp = async (user) => {
+  await connectDB();
+  const { name, image } = user;
+
+  const formData = { ...user, image: `${image}` };
   const { sent } = await dbSend(formData);
-  connectDB();
 
   if (sent)
     return {
