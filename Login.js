@@ -9,7 +9,7 @@ const Login = async (username, password) => {
         status: false,
         message: {
           token: null,
-          Description: "Invalid Details",
+          description: "Invalid Details",
         },
       },
     };
@@ -24,7 +24,7 @@ const Login = async (username, password) => {
         status: true,
         message: {
           token: "testToken",
-          Description: `${username} has been logged in successfully`,
+          description: `${username} has been logged in successfully`,
         },
       },
     };
@@ -36,7 +36,7 @@ const Login = async (username, password) => {
         status: false,
         message: {
           token: null,
-          Description: `username or password not found`,
+          description: `username or password not found`,
         },
       },
     };
