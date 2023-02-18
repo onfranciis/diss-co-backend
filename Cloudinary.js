@@ -1,4 +1,4 @@
-const cloudinary = require("cloudinary").v2;
+// const cloudinary = require("cloudinary").v2;
 const path = require("path");
 
 cloudinary.config({
@@ -10,14 +10,10 @@ cloudinary.config({
 const imagePath = path.join(__dirname, "uploads", "User.jpg");
 
 const cloudinaryUpload = async () => {
-  const res = cloudinary.uploader.upload(imagePath, { resource_type: "image" });
-  return res
-    .then((data) => {
-      return data;
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  const res = await cloudinary.uploader.upload(imagePath, {
+    resource_type: "image",
+  });
+  return res;
 };
 
 module.exports = { cloudinaryUpload };
