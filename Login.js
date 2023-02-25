@@ -1,4 +1,5 @@
 const { loginDb } = require("./db");
+const jwt = require("jsonwebtoken");
 
 const Login = async (username, password) => {
   if (username == "" || password == "") {
@@ -17,13 +18,16 @@ const Login = async (username, password) => {
 
   const { sent } = await loginDb(username, password);
   if (sent) {
+    const userPayload = { name: username };
+    const token = jwt.sign(userPayload, process.env.ACCESS_TOKEN_SECRET);
+
     return {
       status: true,
       code: 200,
       data: {
         status: true,
         message: {
-          token: "testToken",
+          token: token,
           description: `${username} has been logged in successfully`,
         },
       },

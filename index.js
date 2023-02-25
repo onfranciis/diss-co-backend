@@ -6,6 +6,7 @@ const fileUpload = require("express-fileupload");
 const { Login } = require("./Login");
 const { SignUp } = require("./SignUp");
 const { Home } = require("./Home");
+const { authenticateToken } = require("./authenticateToken");
 const PORT = process.env.PORT || 1234;
 const app = express();
 app.use(cors());
@@ -30,7 +31,7 @@ app.post(
   }
 );
 
-app.post("/api/user/", express.json(), async (req, res) => {
+app.post("/api/user/", express.json(), authenticateToken, async (req, res) => {
   const { username } = req.body;
   res.json(await Home(username));
 });
